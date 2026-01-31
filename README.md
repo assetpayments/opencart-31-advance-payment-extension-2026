@@ -1,4 +1,4 @@
-# OpenCart 3+ Payment Module / Модуль оплаты OpenCart 3+
+# OpenCart 3+ Payment Extension With Advance
 
 ---
 
