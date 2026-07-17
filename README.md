@@ -55,7 +55,6 @@ $updatedPrice = $this->currency->format(
     $order_info['currency_value'],
     false
 ),
----
 
 ### Принудительный выбор UAH если цены указаны в USD/EUR
 В контроллере `catalog/controller/extension/payment/assetpayments.php` добавить в private function prepare_payload
