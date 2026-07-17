@@ -57,3 +57,24 @@ $updatedPrice = $this->currency->format(
 ),
 ---
 
+### Принудительный выбор UAH если цены указаны в USD/EUR
+В контроллере `catalog/controller/extension/payment/assetpayments.php` добавить в private function prepare_payload
+
+$uah_rate = $this->currency->getValue('UAH');
+
+В массив товаров
+$unit_price = ($product['price'] + $product['tax']);
+$unit_price_uah = $unit_price * $uah_rate;
+
+'ProductPrice'    => number_format((float)$unit_price_uah, 2, '.', '')
+
+В массив доставки
+$shipping_uah = $shipping_total * $uah_rate;
+
+'ProductPrice'    => number_format((float)$shipping_uah, 2, '.', '')
+
+В переменные запроса
+'Amount'         => number_format((float)($order_info['total'] * $uah_rate), 2, '.', ''),
+'Currency'       => 'UAH',
+'Discount'       => number_format((float)($discount_total * $uah_rate), 2, '.', ''),
+
